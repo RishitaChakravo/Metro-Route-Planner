@@ -33,7 +33,7 @@ export default function Home() {
         console.log("FromId and ToId required");
         return;
       }
-      const response = await axios.post("http://localhost:8080/getroute", [fromId, toId]);
+      const response = await axios.post(`${process.env.BACKEND_URL}/getroute`, [fromId, toId]);
       const newDist = response.data.totalDistance;
       const newPath = response.data.path;
 
@@ -69,7 +69,7 @@ export default function Home() {
   useEffect(() => {
     const getStations = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/stations");
+        const response = await axios.get(`${process.env.BACKEND_URL}/stations`);
         setAllStations(response.data);
       } catch (e) {
         console.error("Request failed:", e);
