@@ -1,0 +1,37 @@
+@import "tailwindcss";
+@import "maplibre-gl/dist/maplibre-gl.css";
+
+:root {
+  --void-navy: #0A0F1E;
+  --panel-slate: #131B2E;
+  --hairline: #232D42;
+  --signal-amber: #FBBF24;
+  --transit-teal: #2DD4BF;
+  --fog-white: #E7ECF5;
+  --muted-steel: #7C8AA5;
+}
+
+@theme inline {
+  --color-background: var(--void-navy);
+  --color-foreground: var(--fog-white);
+  --color-panel: var(--panel-slate);
+  --color-hairline: var(--hairline);
+  --color-signal-amber: var(--signal-amber);
+  --color-transit-teal: var(--transit-teal);
+  --color-muted-steel: var(--muted-steel);
+}
+
+body {
+  background: var(--void-navy);
+  color: var(--fog-white);
+  font-family: var(--font-body), sans-serif;
+}
+
+.station-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.station-scroll::-webkit-scrollbar-thumb {
+  background: var(--hairline);
+  border-radius: 3px;
+}
