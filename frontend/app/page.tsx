@@ -79,16 +79,15 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center h-screen py-4 overflow-hidden" style={{ background: "var(--void-navy)" }}>
+    <div className="flex justify-center items-start h-dvh md:items-center md:py-4 md:overflow-hidden" style={{ background: "var(--void-navy)" }}>
       <div
-        className="flex w-3/4 max-h-[85vh] rounded-2xl overflow-hidden border md:flex-col-reverse"
+        className="flex flex-col-reverse w-full md:flex-row md:w-3/4 md:max-h-[85vh] rounded-2xl md:overflow-hidden border"
         style={{ borderColor: "var(--hairline)", boxShadow: "0 20px 60px rgba(0,0,0,0.5)" }}
       >
         <div
-          className="w-1/2 overflow-y-auto p-7 station-scroll"
+          className="w-full md:w-1/2 overflow-y-auto p-7 station-scroll"
           style={{ background: "var(--panel-slate)" }}
         >
-          {/* Header */}
           <div className="flex items-center gap-2 mb-6">
             <Navigation size={18} style={{ color: "var(--signal-amber)" }} />
             <h1
@@ -285,7 +284,7 @@ export default function Home() {
             Find Route
           </button>
         </div>
-        <div className="w-1/2">
+        <div className="w-full h-[80vh] md:h-auto md:w-1/2 ">
           <Map stations={station} />
         </div>
       </div>

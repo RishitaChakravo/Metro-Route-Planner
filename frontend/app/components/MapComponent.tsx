@@ -205,7 +205,7 @@ export default function MapComponent({ stations }: Props) {
       ref={mapContainer}
       style={{
         width: "100%",
-        height: "100vh",
+        height: "100%",
       }}
     />
   );
