@@ -1,7 +1,5 @@
 package com.rishita.backend;
 
-import java.util.List;
-import java.util.Map;
 import java.util.*;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -35,11 +33,17 @@ public class Main {
 
     @PostMapping("/getroute")
     public PathResult run(@RequestBody long[] ids) throws Exception {
+        if (nodes == null || edges == null) {
+            DataController dc = new DataController();
+            Map<String, Object> graph = dc.loadGraph();
+            nodes = (Map<Long, Station>) graph.get("nodes");
+            edges = (List<Map<String, Object>>) graph.get("edges");
+        }
+
         long fromId = ids[0];
         long toId = ids[1];
 
         Dijkstra djk = new Dijkstra();
-        PathResult result = djk.dijkstraAlgorithm(nodes, edges, fromId, toId);
-        return result;
+        return djk.dijkstraAlgorithm(nodes, edges, fromId, toId);
     }
 }

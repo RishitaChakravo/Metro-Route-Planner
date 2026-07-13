@@ -78,6 +78,12 @@ public class Dijkstra{
         }
         Collections.reverse(path);
         PathResult result = new PathResult(path, distance.get(to.id));
+
+        PathTimeFinder ptf = new PathTimeFinder();
+        
+        long time = ptf.loadTimeForPath(result.getPath());
+        result.setTime(time);
+        
         return result;
     }
 }

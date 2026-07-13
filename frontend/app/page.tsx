@@ -36,6 +36,9 @@ export default function Home() {
       const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/getroute`, [fromId, toId]);
       const newDist = response.data.totalDistance;
       const newPath = response.data.path;
+      const t = response.data.time;
+      console.log("Raw response:", response.data);
+      console.log("time value:", t, typeof t);
 
       setDist(newDist);
       setStations(newPath);
@@ -51,16 +54,15 @@ export default function Home() {
       }
       setInterchangeCount(changes);
 
-      const avgSpeedKmh = 30;
       const dwellSecPerStop = 35;
       const transferPenaltyMin = 5;
 
       if (!newDist) return;
-      const travelMin = (newDist / avgSpeedKmh) * 60;
+      const travelMin = t/60;
       const dwellMin = (newPath.length * dwellSecPerStop) / 60;
       const transferMin = changes * transferPenaltyMin;
 
-      setTime(Math.ceil(travelMin + dwellMin + transferMin))
+      setTime(Math.ceil(travelMin))
     } catch (err) {
       console.error("Request failed:", err);
     }
